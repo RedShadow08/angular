@@ -1,0 +1,396 @@
+<!-- login -->
+<div *ngIf="isLogin" style="width: 100vw;  " class="mt-4 ">
+  <div class="container d-flex flex-row mainbox">
+    <!-- section 1 -->
+    <div class="container heading box1">
+      <br><br><br><br><br>
+      <img
+        src="https://www.lystloc.com/blog/wp-content/uploads/2022/12/Lystloc4.webp"
+        style="width: 70%"
+        alt="logo"
+      />
+      <br />
+
+      <span
+        class="mt-1 mb-5 pb-1"
+        style="
+          font-size: 2.4em;
+          font-weight: bolder;
+          color: rgba(21, 19, 19, 0.7);
+        "
+      >
+        Employee Management System
+      </span>
+    </div>
+    <!-- section1 ends here -->
+
+    <!-- <section 2  login form-->
+    <div class="container boxform box2" *ngIf="!isEmail && !isOtp">
+      <div class="center mt-3" style="width: 100%; height: 100%">
+        <form (ngSubmit)="onLogin()">
+          <h4 class="mt-5 mb-2 here">Login Here!!</h4>
+          <br />
+
+          <mat-form-field class="w-75" appearance="outline">
+            <mat-label>Email </mat-label>
+            <input
+              class="p-1 field"
+              type="email"
+              id="email"
+              name="email"
+              matInput
+              [(ngModel)]="credentials.email"
+            />
+          </mat-form-field>
+
+          <!-- another input type -->
+          <!-- 
+          <div class="fields m-3">
+            <input
+              class="p-2"
+              style="font-size: 1.1em"
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Enter your email"
+              [(ngModel)]="credentials.email"
+            />
+          </div> -->
+          <!-- another input type -->
+
+          <mat-form-field class="w-75" appearance="outline">
+            <mat-label>Password </mat-label>
+            <input
+              class="p-1 field"
+              type="password"
+              id="password"
+              name="password"
+              matInput
+              [(ngModel)]="credentials.password"
+            />
+          </mat-form-field>
+
+          <!-- button -->
+          <div class="text-center pt-1 mb-4 pb-1 d-block">
+            <input
+              class="btn btn-danger btn-block p-1 mb-1 w-50"
+              type="submit"
+              value="Login"
+              style="font-size: 1.2em"
+            /><br />
+            <!-- forgot password -->
+            <button
+              class="text-muted"
+              href="#!"
+              style="
+                font-size: 0.9em;
+                background: none;
+                color: inherit;
+                border: none;
+                padding: 0;
+                font: inherit;
+                cursor: pointer;
+                outline: inherit;
+              "
+              (click)="showForgot(true, false)"
+            >
+              <!-- false false === login page -->
+              <!-- true false === enter email -->
+              <!-- false true === enter otp -->
+              <!-- true true ===change password -->
+
+              Forgot password?
+            </button>
+          </div>
+
+          <!-- signup button here -->
+          <div
+            class="d-flex align-items-center justify-content-center pb-4"
+            style="font-size: 1.1em"
+          >
+            <p class="mb-0 me-2">Don't have an account?</p>
+            <button
+              type="button"
+              (click)="signUp()"
+              class="btn btn-outline-danger p-1"
+            >
+              Create new
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- interpolation -->
+      <!-- {{ credentials | json }} -->
+      <!-- interpolation -->
+      <!-- LOgin Form Ends -->
+    </div>
+    <!-- section2 ends here -->
+
+    <!-- Forgot Password Interface -->
+
+    <!-- step 1 === enter email -->
+    <div class="container boxform box2" *ngIf="isEmail && !isOtp">
+      <div class="center" style="width: 100%; height: 70vh">
+        <form (ngSubmit)="showForgot(false, true)">
+          <!-- false true === enter otp -->
+          <!-- true true ===change password -->
+
+          <h4 class="mt-5 mb-2 here">Forgot Password?</h4>
+          <br /><br />
+          <mat-form-field class="w-75" appearance="outline">
+            <mat-label>Enter Registered Email </mat-label>
+            <input
+              class="p-1 field"
+              type="email"
+              id="email"
+              name="email"
+              matInput
+              [(ngModel)]="changePassword.email"
+            />
+          </mat-form-field>
+
+          <!-- button -->
+
+          <div class="text-center pt-1 mb-4 pb-1 d-block">
+            <input
+              class="btn btn-danger btn-block p-1 mb-1 w-50"
+              type="submit"
+              value="Send OTP"
+              style="font-size: 1.2em"
+            />
+          </div>
+          <br />
+        </form>
+      </div>
+    </div>
+
+
+
+
+    <!-- step 1 === enter otp -->
+
+    <div class="container boxform box2" *ngIf="!isEmail && isOtp">
+      <div class="center" style="width: 100%; height: 70vh">
+        <form (ngSubmit)="showForgot(true, true)">
+          <!-- false true === enter otp -->
+          <!-- true true ===change password -->
+
+          <h4 class="mt-5 mb-2 here">Forgot Password?</h4>
+          <br />
+          
+          <span class="text-success m-2" >We have successfully sent the OTP!!!</span>
+
+          <mat-form-field class="w-75" appearance="outline">
+            <mat-label>Enter OTP </mat-label>
+            <input
+              class="p-1 field"
+              type="otp"
+              id="otp"
+              name="otp"
+              matInput
+              [(ngModel)]="changePassword.otp2"
+            />
+          </mat-form-field>
+          
+          <!-- button -->
+
+          <div class="text-center pt-1 pb-1 d-block">
+            <input
+              class="btn btn-danger btn-block p-1  w-50"
+              type="submit"
+              value="Verify OTP"
+              style="font-size: 1.2em"
+            />
+          </div>
+          <br />
+        </form>
+
+        <button class="btn btn-danger btn-block p-1 mb-1 w-50" (click)="showForgot(false, true)">Re-Send OTP</button>
+      </div>
+    </div>
+
+
+
+    <!-- step 1 === enter password and change it  -->    
+
+    <div class="container boxform box2" *ngIf="isEmail && isOtp">
+      <div class="center" style="width: 100%; height: 70vh">
+        <form (ngSubmit)="showForgot(false, false)">
+          <!-- false true === enter otp -->
+          <!-- true true ===change password -->
+
+          <h4 class="mt-5 mb-2 here">Change Password</h4>
+          <br /><br />
+          <mat-form-field class="w-75" appearance="outline">
+            <mat-label>New Password </mat-label>
+            <input
+              class="p-1 field"
+              type="text"
+              id="passwd1"
+              name="passwd1"
+              matInput
+              [(ngModel)]="changePassword.passwd1"
+            />
+          </mat-form-field>
+
+          <mat-form-field class="w-75" appearance="outline">
+            <mat-label>Re-enter New Password </mat-label>
+            <input
+              class="p-1 field"
+              type="text"
+              id="passwd2"
+              name="passwd2"
+              matInput
+              [(ngModel)]="changePassword.passwd2"
+            />
+          </mat-form-field>
+
+          <!-- button -->
+
+          <div class="text-center pt-1 mb-4 pb-1 d-block">
+            <input
+              class="btn btn-danger btn-block p-1 mb-1 w-50"
+              type="submit"
+              value="Change Password"
+              style="font-size: 1.2em"
+            />
+          </div>
+          <br />
+        </form>
+      </div>
+    </div>
+
+    <!-- Forgot Password Interface ends-->
+  </div>
+</div>
+
+
+
+<!-- second page -->
+<!-- signup  -->
+
+<div *ngIf="!isLogin" style="width: 100vw;  " class="mt-4 ">
+  <div class="container d-flex flex-row mainbox">
+    <!-- 1st part -->
+    <div class="container boxform box1">
+      <div class="" style="width: 100%; height: 70vh">
+        <form (ngSubmit)="onRegister()"><br><br>
+          <h4 class="mt-3 mb-2 here">Register Here!!</h4>
+          <br />
+
+          <mat-form-field class="w-75" appearance="outline">
+            <mat-label>Email </mat-label>
+            <input
+              class="p-1 field"
+              type="email"
+              id="email"
+              name="email"
+              matInput
+              [(ngModel)]="credentials.email"
+            />
+          </mat-form-field>
+
+          <!-- another input type -->
+          <!-- 
+          <div class="fields m-3">
+            <input
+              class="p-2"
+              style="font-size: 1.1em"
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Enter your email"
+              [(ngModel)]="credentials.email"
+            />
+          </div> -->
+          <!-- another input type -->
+
+          <mat-form-field class="w-75" appearance="outline">
+            <mat-label>Name </mat-label>
+            <input
+              class="p-1 field"
+              type="name"
+              id="name"
+              name="name"
+              matInput
+              [(ngModel)]="credentials.name"
+            />
+          </mat-form-field>
+
+          <mat-form-field class="w-75" appearance="outline">
+            <mat-label>Password </mat-label>
+            <input
+              class="p-1 field"
+              type="password"
+              id="password"
+              name="password"
+              matInput
+              [(ngModel)]="credentials.password"
+            />
+          </mat-form-field>
+          <!-- button -->
+          <div class="text-center pt-1 mb-4 pb-1 d-block">
+            <input
+              class="btn btn-danger btn-block p-1 mb-1 w-50"
+              type="submit"
+              value="Register"
+              style="font-size: 1.2em"
+            />
+          </div>
+
+          <!-- signup button here -->
+          <div
+            class="d-flex align-items-center justify-content-center pb-4"
+            style="font-size: 1.1em"
+          >
+            <p class="mb-0 me-2">Already have an account?</p>
+            <button
+              type="button"
+              (click)="signIn()"
+              class="btn btn-outline-danger p-1"
+            >
+              LogIn
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- interpolation -->
+      <!-- {{ credentials | json }} -->
+      <!-- interpolation -->
+      <!-- LOgin Form Ends -->
+    </div>
+
+    <!-- 2nd part -->
+    <div class="container box2">
+      <div
+        class=""
+        style="
+          position: absolute;
+          top: 50%;
+          right: 50%;
+          transform: translate(100%, -50%);
+        "
+      >
+       <img
+        src="https://www.lystloc.com/blog/wp-content/uploads/2022/12/Lystloc4.webp"
+        style="width: 70%"
+        alt="logo"
+      />
+        <h3
+          class="mt-1 mb-5 pb-1"
+          style="
+            font-size: 2.4em;
+            font-weight: bolder;
+            color: rgba(21, 19, 19, 0.7);
+          "
+        >
+          Employee Management System
+        </h3>
+      </div>
+    </div>
+
+    <!-- 2nd part -->
+  </div>
+</div>

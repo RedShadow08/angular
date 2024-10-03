@@ -1,0 +1,60 @@
+<div class="container mt-4">
+    <span class="mt-3" style="font-size: 1.7rem; font-weight: bolder"
+      >Add Employee Here!!!</span
+    >
+    <form class="container mt-3 p-2" (ngSubmit)="onAdd()">
+      <div class="fields">
+        <label for="fname">First Name:</label>
+        <input
+          type="text"
+          id="fname"
+          name="fname"
+          required
+          [(ngModel)]="employee.firstName"
+        />
+        <div class="" style="color: red; font-size: 0.8em" *ngIf="!name">
+          Enter first name to proceed
+        </div>
+      </div>
+      <!-- <span class="text-danger">{{errorMsg}}</span> -->
+      <div class="fields">
+        <label for="lname">Last Name:</label>
+        <input
+          type="text"
+          id="lname"
+          name="lname"
+          [(ngModel)]="employee.lastName"
+        />
+      </div>
+      <div class="fields">
+        <label for="email">Email:</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          required
+          [(ngModel)]="employee.email"
+        />
+        <div style="color: red; font-size: 0.8em" *ngIf="!isEmail">
+          Enter email to proceed
+        </div>
+      </div>
+      <!-- <span class="text-danger">{{errorMsg}}</span> -->
+  
+      <div class="fields">
+        <label for="status">Status : &nbsp; &nbsp;</label>
+        <select class="form-select" style="color: rgb(78, 69, 69);" id="status" name="status">
+          <option value="active" selected>Active</option>
+          <option value="inactive" disabled>Inactive</option>
+        </select>
+      </div>
+      <input
+        style="margin: 8px; padding: 10px; width: 98%"
+        class=""
+        value="Add"
+        type="submit"
+      />
+    </form>
+    <div class="m-5 p-3"></div>
+  </div>
+  

@@ -1,0 +1,42 @@
+<!-- <nav class="navbar navbar-light pb-3 pt-3" >
+   <a routerLink="/" style="text-decoration: none; "><span class="navbar-brand m-2 " style="font-size: 1.6rem;">Navbar</span></a>     
+  </nav>
+   -->
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <span class="navbar-brand p-1" style="font-size: 2rem; margin-left: 8px"
+    >Employee Management Application</span
+  >
+
+  <!-- button when width is decreased -->
+
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    href="#navbarNavAltMarkup"
+    aria-controls="navbarNavAltMarkup"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav" style="font-size: 1.1em; width: 88%;">
+      <!-- <a class="nav-item nav-link active" href="#">Home</a> -->
+      <a class="nav-item nav-link" routerLink="employees">Employee List</a>
+      <a class="nav-item nav-link" routerLink="create-employee">Add Employee</a>
+      <a class="nav-item nav-link" routerLink="inactive-employee"
+        >Inactive Employees</a
+      >
+    </div>
+    <div style="width: 12%;">
+      <span>
+        <button class="m-1 p-1" style="border: none; border-radius: 5px" (click)="loggingOut()">
+          Log Out
+        </button></span
+      >
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,46 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+.center{
+    position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+}
+.mainbox{height: 78vh; 
+    text-align: center;}
+/* .parent{
+    position: fixed;
+        width: 50vw;
+        height: 100%;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        vertical-align: middle;
+        background-color: rgba(185, 166, 143, 0.4);
+} */
+.box1{
+    min-width: 50vw;
+}
+.box2{
+    min-width: 50vw; 
+}
+.heading{
+    width: 50%; 
+    text-align: center;
+    position: relative;
+}
+.boxform{      
+    background-color: rgba(185, 166, 143, 0.4);
+    position: relative;
+}
+.here{
+    font-size: 2em;
+    font-weight: bolder;
+    color: rgba(21, 19, 19, 0.7);
+}
+.field{
+    width: 75%;
+    font-size: 1.1em;
+}
